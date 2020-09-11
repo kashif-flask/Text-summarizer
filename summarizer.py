@@ -88,7 +88,7 @@ def summarize_pdf(article_text):
     return sent_list,clean_sent,sentence_lists,sentence_list
             
 def model(sent_list,clean_sent,sentence_lists,sentence_list):
-    model=KeyedVectors.load("model.bin")   /*'model.bin is a file that i created using glove.py file'*/ 
+    model=KeyedVectors.load("model.bin")   /*'model.bin is a file that i created using glo.py file'*/ 
     sent_vectors=[]
     for i in clean_sent:
         if (len(i)!=0):
