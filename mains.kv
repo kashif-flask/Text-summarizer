@@ -1,0 +1,103 @@
+#:import isfile os.path.isfile
+ 
+ScreenManager:
+    MainScreen:
+    AnotherScreen:
+
+
+<MainScreen>:
+    name:"main"
+    round:[0,0,25,25]
+    
+    MDBoxLayout:
+        orientation:'vertical'
+        
+        MDBoxLayout:
+            
+            md_bg_color:[0,0,0,1]
+            FileChooserIconView:
+                id:filechooser
+                filters:[root.filter]
+                on_selection:
+                    root.assign()
+                    root.txt()
+                    root.select()
+        
+        MDBoxLayout:
+            orientation:'vertical'
+            
+            md_bg_color:[1,1,1,1]
+
+            MDTextField:
+                id:length
+                hint_text:"Enter Length(then press enter)"
+                helper_text:"Number of sentences require"
+                helper_text_mode:"on_focus"
+                hint_text_color:[1,0,1,1]
+                multiline:False
+                on_text_validate:
+                    root.lengths=self.text if len(self.text)>0 else 0
+                required:True
+                color_mode:'accent'
+                input_filter:"float"
+                line_color_focus:[1,0,1,1]
+                
+                 
+                    
+                
+            MDLabel:
+                text_size:self.width,None
+                theme_text_color:"Custom"
+                text_color:1,0,0,1
+                id:lab
+                text:"FILE SELECTED:-"+root.paths
+                size_hint_x:1
+                font:200
+                center:self.center
+                hint_size_x:0.4
+            
+                
+                
+            MDRaisedButton:
+                md_bg_color:[1,0,0,1]
+                on_press:
+                    root.mo()
+                    
+                on_release:
+                    app.root.current="other"
+                text:"summarize"
+                center:self.center
+                font_size:50   
+        
+
+<AnotherScreen>:
+    tx:text_input
+    name:"other"
+    round:[0,25,25,25]
+    md_bg_color:[1,1,1,1]
+    MDBoxLayout:
+        orientation:'vertical'
+        MDBoxLayout:
+            md_bg_color:[1,1,1,1]
+            ScrollView:
+                MDTextField:
+                    id:text_input
+                    multiline:True
+                    text:""
+                    size_hint_y:None
+                    
+                    text_size:self.width,None
+                    padding:10,10
+        
+        MDBoxLayout:
+            adaptive_height:True
+            md_bg_color:[0,0,0,1]
+            MDRaisedButton:
+                md_bg_color:[1,0,0,1]
+                on_release:
+                    root.tx.text=""
+                    app.root.current="main"
+                
+                center:self.center
+                text:"back"
+                font_size:50
