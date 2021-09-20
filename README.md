@@ -32,6 +32,13 @@ Extractive Text Summarizer is a pdf summarizer, in this user provide the pdf tha
 - Kivy
 - Kivymd
 
+
+# Document used
+
+![alt text](https://github.com/kashif-flask/Text-summarizer/blob/master/legal_doc.pdf)
+
+
+
 ## What the app looks like
 
 
