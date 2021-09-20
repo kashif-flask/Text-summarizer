@@ -4,8 +4,10 @@ Extractive Text Summarizer is a pdf summarizer, in this user provide the pdf tha
 ## How to run the app
 1. Either fork or downlod app files.
 2. Install all dependencies given in requirements.txt file in cmd using  pip install -r requirements.txt
-3. run userinterface.py file
-4. App will appear on screen
+3. First download "glove.6B.100d.txt" from kaggle or any other site where 100d is 100 dimension embedding.
+4. Then run "glo.py" file, "model.bin" will be created.
+5. Now run "userinterface.py"
+6. Screen will be displayed
 
 ## How to use app
 1. Choose file from folder window which need to be summarized(after selecting file it will take tim, wait until selected file path is displayed on screen).
