@@ -108,6 +108,8 @@ def model(sent_list,clean_sent,sentence_lists,sentence_list):
 
     summ=[j for i,j in ranked_sentences]
     return summ
+
+# run this part is you want to run program without GUI, just provide path of file to be summarized
 """path="C:/Users/KASHIF AI/Desktop/Text-summarizer-master/legal_doc.pdf"
 text=convert_pdf_to_txt(path)
 sent_list,clean_sent,sentence_lists,sentence_list= summarize_pdf(text)
