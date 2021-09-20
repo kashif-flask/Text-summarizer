@@ -16,19 +16,22 @@ from kivymd.uix.boxlayout import MDBoxLayout
 from kivy.uix.label import Label
 from kivymd.uix.spinner import MDSpinner
 from kivymd.uix.progressbar import MDProgressBar
-import project
+import summarizer
 
 import os
 
 
 def totxt(path):
-    ss=project.convert_pdf_to_txt(path)
+    ss=summarizer.convert_pdf_to_txt(path)
+    print("converted to text")
     return ss
 def summmarize(text):
-    ob1,ob2,ob3,ob4=project.summarize_pdf(text)
+    ob1,ob2,ob3,ob4=summarizer.summarize_pdf(text)
+    print("convert to words")
     return ob1,ob2,ob3,ob4
-def model(ob1,ob2,ob3,ob4):
-    summ=project.model(ob1,ob2,ob3,ob4)
+def models(ob1,ob2,ob3,ob4):
+    summ=summarizer.model(ob1,ob2,ob3,ob4)
+    print("summarized")
     return summ
 
 class MainScreen(MDScreen):
@@ -66,11 +69,17 @@ class MainScreen(MDScreen):
             
             try:
                 
-                self.l=model(self.l1,self.l2,self.l3,self.l4)
+                self.l=models(self.l1,self.l2,self.l3,self.l4)
+                print("Summarized")
                 
                 self.smm="".join(self.l[:int(self.lengths)])
+                
                 with open("summary.txt",'w') as f:
-                    f.write(self.smm)
+                    try:
+                        f.write(self.smm)
+                    except:
+                        pass
+                    
                 self.manager.get_screen('other').ids['text_input'].text=self.smm
             except:
                 self.popup("OOPS! SOMETHING WENT WRONG")

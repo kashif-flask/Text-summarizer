@@ -16,6 +16,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import string
 import re
+#nltk.download('all')
 punc=string.punctuation
 stopwords = nltk.corpus.stopwords.words('english')
 
@@ -88,7 +89,7 @@ def summarize_pdf(article_text):
     return sent_list,clean_sent,sentence_lists,sentence_list
             
 def model(sent_list,clean_sent,sentence_lists,sentence_list):
-    model=KeyedVectors.load("model.bin")   /*'model.bin is a file that i created using glo.py file'*/ 
+    model=KeyedVectors.load("model.bin")   
     sent_vectors=[]
     for i in clean_sent:
         if (len(i)!=0):
@@ -107,8 +108,9 @@ def model(sent_list,clean_sent,sentence_lists,sentence_list):
 
     summ=[j for i,j in ranked_sentences]
     return summ
-
-
-  
-    
+"""path="C:/Users/KASHIF AI/Desktop/Text-summarizer-master/legal_doc.pdf"
+text=convert_pdf_to_txt(path)
+sent_list,clean_sent,sentence_lists,sentence_list= summarize_pdf(text)
+summary=model(sent_list,clean_sent,sentence_lists,sentence_list)
+print(summary[:10])"""
 
